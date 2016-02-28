@@ -16,7 +16,7 @@ $router->map( 'GET|POST', '/add', function() {
 });
 
 $router->map( 'GET', '/delete/[i:id]', function( $id ) {
-  require __DIR__ . '/views/list.php';
+  require __DIR__ . '/views/delete.php';
 });
 
 // assuming current request url = '/'

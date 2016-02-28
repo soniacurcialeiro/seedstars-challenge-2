@@ -6,17 +6,10 @@ require "contacts.php";
 // Get the Database instance and connection
 $db = Database::getInstance();
 $connection = $db->getConnection();
-
-
-if ( isset($id) ){
-  deleteContact( $connection, $id );
-  header("Location: /list");
-  exit;
-}
 ?>
 
 <div class="page-header">
-  <h1>List</h1>
+  <h1>List Contacts</h1>
 </div>
 
 <?php
@@ -35,10 +28,12 @@ $db->closeConnection();
 function showContacts( $connection ){
   $list_contacts = Contacts::findAll($connection);
 
-  /*if ( !$list_contacts->fetchArray() ){
-    echo "There are no contacts to show.";
+  if ( !$list_contacts->fetchArray() ){
+    echo "<p>There are no contacts to show.</p>";
     return;
-  }*/?>
+  }
+  $list_contacts->reset();
+  ?>
 
   <div class="table-responsive">
     <table class="table table-striped">
@@ -56,7 +51,7 @@ function showContacts( $connection ){
           echo '<tr>
             <td>' . htmlspecialchars( $contact["name"] ) . '</td>
             <td>' . htmlspecialchars( $contact["email"] ) . '</td>
-            <td><a href="/delete/' . $contact["id"] . '" class="btn btn-sm btn-default" onclick="return confirm(\'Are you sure you want to delete this item?\');">Delete</a></td>
+            <td class="text-right"><a href="/delete/' . $contact["id"] . '" class="btn btn-sm btn-default" onclick="return confirm(\'Are you sure you want to delete this item?\');">Delete</a></td>
           </tr>';
         }
         ?>
@@ -67,8 +62,3 @@ function showContacts( $connection ){
 
   <?php
 }
-
-function deleteContact( $connection, $id ){
-  Contacts::deleteContact($connection, $id);
-}
-?>
