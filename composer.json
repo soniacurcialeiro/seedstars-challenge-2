@@ -1,0 +1,6 @@
+{
+    "require": {
+        "twbs/bootstrap": "^3.3",
+        "altorouter/altorouter": "^1.1"
+    }
+}
