@@ -7,7 +7,6 @@ class Database {
 
   private function __construct($file)
   {
-    //unlink($file);
     $this->_db = new SQLite3($file); // create database
 
     $this->_initialize(); // create tables
@@ -15,7 +14,7 @@ class Database {
   }
 
   // return the database instance
-  public static function getInstance( $file = 'seedstarsdb.db' ) {
+  public static function getInstance( $file = 'db/seedstarsdb.db' ) {
 		if(!self::$_instance) {
 			self::$_instance = new self( $file );
 		}

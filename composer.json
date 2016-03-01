@@ -1,6 +1,7 @@
 {
     "require": {
         "twbs/bootstrap": "^3.3",
-        "altorouter/altorouter": "^1.1"
+        "altorouter/altorouter": "^1.1",
+        "league/plates": "^3.1"
     }
 }

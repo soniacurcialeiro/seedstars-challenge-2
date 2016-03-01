@@ -25,6 +25,16 @@
     <br />
 
     <div class="container body">
+      <?php echo $this->section('content');?>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right">Sónia Fernandes</p>
+      </div>
+    </footer>
+  </body>
+</html>
 
 
 <?php
@@ -32,4 +42,3 @@ function getClass ( $menu ){
   if ( strpos($_SERVER['REQUEST_URI'], $menu ) ) return 'class="active"';
   return '';
 }
-?>
